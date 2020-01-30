@@ -1,25 +1,19 @@
 from PyQt5.QtWidgets import *
+from searchbar import searchBar
 
-# Creating the QApplication called "app"
-app = QApplication([])
-# Creating a window to display our current and forecast weather
-window = QWidget()
 
-# Creating a layout to hold the searchbar and search button
-searchBarLayout = QHBoxLayout()
-# Creating a search bar for the user to search for their city
-searchBarLayout.addWidget(QLineEdit(placeholderText="Please Enter Your City..."))
-searchBarLayout.addWidget(QPushButton("Search"))
+class mainWindow(QWidget):
+    def __init__(self):
+        super(mainWindow, self).__init__()
 
-# Creating the mainLyout as a Vertical layout
-mainLayout = QVBoxLayout()
-mainLayout.addLayout(searchBarLayout)
+        main_layout = QVBoxLayout()
 
-# Setting our window's main layout to be "mainLayout". This contains all our
-# sub-layers that hold the searchbar, forecast and the detailed information
-# of the day's forecast
-window.setLayout(mainLayout)
+        self.searchbar_layer = searchBar(self)
+        main_layout.addLayout(self.searchbar_layer)
 
-window.show()
 
-app.exec_()
+if __name__ == "__main__":
+    app = QApplication([])
+    window = mainWindow()
+    window.show()
+    app.exec_()
