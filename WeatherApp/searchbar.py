@@ -11,7 +11,7 @@ class searchBar(QHBoxLayout):
         self.addWidget(searchButton)
         searchButton.clicked.connect(self.on_clicked)
 
-    def on_clicked():
+    def on_clicked(self):
         alert = QMessageBox()
         alert.setText("Button Clicked")
         alert.exec_()
